@@ -22,9 +22,39 @@ opcijas = (("A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes
 ("A Ar gribu",  "B Ar iesnām",  "C Ar jūras slimību",  "D Ar bronhītu"),
 ("A Ar 5 km/h",  "B Ar 10km/h",  "C Ar 50 km/h",  "D Ar 0 km/h"),)
 
-atbildes = ()
+atbildes = ("D", "A", "C", "C", "B", "D", "A", "C",  "C", "D")
 minejumi = []
 
 punkti = 0
 
-jautajumi_num = 0
+jautajuma_num = 0
+
+for jautajums in jautajumi:
+    print(jautajums)
+    for opcija in opcijas[jautajuma_num]:
+        print(opcija)
+
+    minejums = input("Atbildi (A, B, C, D): ").upper()
+    minejumi.append(minejums)
+    if minejums == atbildes[jautajuma_num]:
+        punkti = punkti + 1
+        print("Pareizi!")
+    else:
+        print("Nepareizi!")
+        print(f"{atbildes[jautajuma_num]} ir pareizā atbilde.")
+    jautajuma_num = jautajuma_num + 1
+
+print("     REZULTĀTI       ")
+
+print("answers: ", end="")
+for atbilde in atbildes:
+    print(atbilde, end="")
+print()
+
+print("minejumi: ", end="")
+for minejums in minejumi:
+    print(minejums, end="")
+print()
+
+rezultats = int(rezultats / len(jautajumi)*100)
+print(f"Jūsu rezultāts ir: {rezultats}%")
