@@ -1,3 +1,12 @@
+f = open("jautajumi.txt", "r") as fp: 
+def jaut():
+    while True:
+        line = fp.readline()
+        if i > lines[-1]:
+             break;
+        i = i + 1
+
+    
 print("TESTS: Vai vari atbildēt pareizi uz 10 āķīgiem jautājumiem?") #vēlāk uzlikt treknāku tekstu, nomainīt krāsu moš aķīgs sarkanu
 
 jautajumi = ("1. Cik zirņi var ieiet vienā glāzē?: ", 
@@ -22,10 +31,10 @@ opcijas = (("A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes
 ("A Ar gribu",  "B Ar iesnām",  "C Ar jūras slimību",  "D Ar bronhītu"),
 ("A Ar 5 km/h",  "B Ar 10km/h",  "C Ar 50 km/h",  "D Ar 0 km/h"),)
 
-atbildes = ("D", "A", "C", "C", "B", "D", "A", "C",  "C", "D")
+atbildes = ("D","A","C","C","B","D","A","C", "C","D")
 minejumi = []
 
-punkti = 0
+punkti = 0 
 
 jautajuma_num = 0
 
@@ -34,7 +43,7 @@ for jautajums in jautajumi:
     for opcija in opcijas[jautajuma_num]:
         print(opcija)
 
-    minejums = input("Atbildi (A, B, C, D): ").upper()
+    minejums = input("Atbildi (A, B, C, D): ").upper() # upper ieskaita arii a b vai c d
     minejumi.append(minejums)
     if minejums == atbildes[jautajuma_num]:
         punkti = punkti + 1
@@ -56,5 +65,5 @@ for minejums in minejumi:
     print(minejums, end="")
 print()
 
-rezultats = int(rezultats / len(jautajumi)*100)
-print(f"Jūsu rezultāts ir: {rezultats}%")
+punkti = int(punkti / len(jautajumi)*100)
+print(f"Jūsu rezultāts ir: {punkti}%")
