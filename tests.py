@@ -20,6 +20,7 @@ read = f.readlines()
 modif = []
 j = "|"
 
+
 for line in read:
     if line[-1] == '\n' :
         modif.append(line[: -1])
@@ -29,21 +30,26 @@ for line in read:
 
 print(modif)
 
+
 a = 0
 
+for i in range ():
+    print(i)
+    break
 
 
-def jautajumi(j):
-    f = open("jautajumi.txt", "r")
-    a = int(input(f.readlines()) )
 
-    print(a) 
+# def jautajumi(j):
+#     f = open("jautajumi.txt", "r")
+#     a = int(input(f.readlines()) )
 
-count = 0
+#     print(a) 
 
-for i in jautajumi(j):
-    count = count + 1
-    jautajumi(j)
+# count = 0
+
+# for i in jautajumi(j):
+#     count = count + 1
+#     jautajumi(j)
 
 
 
