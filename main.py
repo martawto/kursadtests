@@ -1,10 +1,20 @@
-f = open("jautajumi.txt", "r") as fp: 
-def jaut():
-    while True:
-        line = fp.readline()
-        if i > lines[-1]:
-             break;
-        i = i + 1
+# f = open("jautajumi.txt", "r") as fp: 
+# def jaut():
+#     while True:
+#         line = fp.readline()
+#         if i > lines[-1]:
+#              break;
+#         i = i + 1
+
+def velreiz():
+
+    response = input("Vai tu vēlies atkārtot testu?(Jā vai Nē): ")
+    response = response.upper()
+
+    if response == "Jā":
+        return True
+    else:
+        return False
 
     
 print("TESTS: Vai vari atbildēt pareizi uz 10 āķīgiem jautājumiem?") #vēlāk uzlikt treknāku tekstu, nomainīt krāsu moš aķīgs sarkanu
@@ -35,7 +45,6 @@ atbildes = ("D","A","C","C","B","D","A","C", "C","D")
 minejumi = []
 
 punkti = 0 
-
 jautajuma_num = 0
 
 for jautajums in jautajumi:
@@ -60,6 +69,22 @@ for atbilde in atbildes:
     print(atbilde, end="")
 print()
 
+try:
+    # Open the text file in append mode
+    with open("atbildes.txt", "a") as f:
+        # Append each answer to the file
+        for atbilde in minejumi:
+            f.write(atbilde + "\n")
+    
+    # Open the text file in read mode
+    with open("answers.txt", "r") as f:
+        # Read the contents of the file and print them
+        contents = f.read()
+        print(contents)
+except Exception as e:
+    # Log the error
+    print(f"Error: {e}")
+
 print("minejumi: ", end="")
 for minejums in minejumi:
     print(minejums, end="")
@@ -67,3 +92,11 @@ print()
 
 punkti = int(punkti / len(jautajumi)*100)
 print(f"Jūsu rezultāts ir: {punkti}%")
+
+
+new_game()
+
+while velreiz():
+    new_game()
+
+print("Paldies!")
