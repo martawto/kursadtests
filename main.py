@@ -69,26 +69,26 @@ for atbilde in atbildes:
     print(atbilde, end="")
 print()
 
-try:
-    # Open the text file in append mode
-    with open("atbildes.txt", "a") as f:
-        # Append each answer to the file
-        for atbilde in minejumi:
-            f.write(atbilde + "\n")
+# try:
+#     # Open the text file in append mode
+#     with open("atbildes.txt", "a") as f:
+#         # Append each answer to the file
+#         for atbilde in minejumi:
+#             f.write(atbilde + "\n")
     
-    # Open the text file in read mode
-    with open("answers.txt", "r") as f:
-        # Read the contents of the file and print them
-        contents = f.read()
-        print(contents)
-except Exception as e:
-    # Log the error
-    print(f"Error: {e}")
+#     # Open the text file in read mode
+#     with open("answers.txt", "r") as f:
+#         # Read the contents of the file and print them
+#         contents = f.read()
+#         print(contents)
+# except Exception as e:
+#     # Log the error
+#     print(f"Error: {e}")
 
-print("minejumi: ", end="")
-for minejums in minejumi:
-    print(minejums, end="")
-print()
+# print("minejumi: ", end="")
+# for minejums in minejumi:
+#     print(minejums, end="")
+# print()
 
 punkti = int(punkti / len(jautajumi)*100)
 print(f"Jūsu rezultāts ir: {punkti}%")

@@ -1,66 +1,74 @@
-def new_game():
+def tests():
 
-    guesses = []
-    correct_guesses = 0
-    question_num = 1
+    minejumi = []
+    pareizatb = 0
+    qnum = 1
 
-    for key in questions:
+    print("TESTS")
+
+    for key in jautajumi:
         print("-------------------------")
         print(key)
-        for i in options[question_num-1]:
+        for i in opcijas[qnum-1]:
             print(i)
-        guess = input("Enter (A, B, C, or D): ")
-        guess = guess.upper()
-        guesses.append(guess)
+        atbilde = input("Ievadi (A, B, C, vai D): ")
+        atbilde = atbilde.upper()
+        minejumi.append(atbilde)
 
-        correct_guesses += check_answer(questions.get(key), guess)
-        question_num += 1
+        pareizatb += check_atb(jautajumi.get(key), atbilde)
+        qnum = qnum + 1
 
-    display_score(correct_guesses, guesses)
+    disp_rezult(pareizatb, minejumi)
 
 # -------------------------
-def check_answer(answer, guess):
+def check_atb(answer, atbilde):
 
-    if answer == guess:
-        print("CORRECT!")
+    if answer == atbilde:
+        print("Pareizi!")
         return 1
     else:
-        print("WRONG!")
+        print("Nepareizi!")
         return 0
 
 # -------------------------
-def display_score(correct_guesses, guesses):
+def disp_rezult(pareizatb, minejumi):
     print("-------------------------")
-    print("RESULTS")
+    print("REZULTĀTS")
     print("-------------------------")
 
-    print("Answers: ", end="")
-    for i in questions:
-        print(questions.get(i), end=" ")
+    print("Atbildes: ", end="")
+    for i in jautajumi:
+        print(jautajumi.get(i), end=" ")
     print()
 
-    print("Guesses: ", end="")
-    for i in guesses:
+    print("Minējumi: ", end="")
+    for i in minejumi:
         print(i, end=" ")
     print()
 
-    score = int((correct_guesses/len(questions))*100)
-    print("Your score is: "+str(score)+"%")
+    score = int((pareizatb/len(jautajumi)) * 100)
+    print("Jūsu rezultāts ir: " + str(score) + "%")
+
+    if score == 100:
+        print("Apsveicu ar perfektu rezultātu!")
+    
 
 # -------------------------
-def play_again():
 
-    response = input("Do you want to play again? (yes or no): ")
+
+def velreiz():
+
+    response = input("Vai vēlies mēģināt vēlreiz? (Jā vai Nē): ")
     response = response.upper()
 
-    if response == "YES":
+    if response == "Jā":
         return True
     else:
         return False
 # -------------------------
 
 
-questions = jautajumi = {"1. Cik zirņi var ieiet vienā glāzē?: ": "D", 
+jautajumi = {"1. Cik zirņi var ieiet vienā glāzē?: ": "D", 
 "2. Kas ir smagāks - 1 kilograms kartupeļu vai 1 kilograms betona?: ": "A", 
 "3. Kāda paliek maize, kad to iemērt Melnajā jūrā?: ": "C", 
 "4. Kādā krāsā bija Napoleona baltais zirgs?: ": "C", 
@@ -71,7 +79,7 @@ questions = jautajumi = {"1. Cik zirņi var ieiet vienā glāzē?: ": "D",
 "9. Ar kādu slimību uz zemes neslimo?: ": "C", 
 "10. Ar kādu ātrumu jāskrien sunim, lai nedzirdētu pie viņa astes piesietās pannas radīto troksni?: ": "D"}
 
-options = [["A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes izmēra",  "D Necik"],
+opcijas = [["A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes izmēra",  "D Necik"],
 ["A Abi vienādi",  "B Kilograms kartupeļu",  "C Kilograms betona",  "D Kilograms biezpiena"],
 ["A Tā tiek nolādēta",  "B Tā paliek melna",  "C Tā paliek slapja",  "D Tā saraujas"],
 ["A Brūnā",  "B Pelēkā",  "C Baltā",  "D Melnā"],
@@ -82,9 +90,9 @@ options = [["A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes
 ["A Ar gribu",  "B Ar iesnām",  "C Ar jūras slimību",  "D Ar bronhītu"],
 ["A Ar 5 km/h",  "B Ar 10km/h",  "C Ar 50 km/h",  "D Ar 0 km/h"],]
 
-new_game()
+tests()
+ 
+while velreiz():
+    tests()
 
-while play_again():
-    new_game()
-
-print("Byeeeeee!")
+print("Paldies!")
