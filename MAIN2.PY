@@ -1,14 +1,17 @@
+import os
+from colorama import Fore
+
 def tests():
 
     minejumi = []
     pareizatb = 0
     qnum = 1
 
-    print("TESTS")
+    print(Fore.RED + "TESTS: Vai vari atbildēt pareizi uz 10 āķīgiem jautājumiem?")
 
     for key in jautajumi:
-        print("-------------------------")
-        print(key)
+        print(Fore.BLUE + "-------------------------")
+        print(Fore.LIGHTBLACK_EX + key)
         for i in opcijas[qnum-1]:
             print(i)
         atbilde = input("Ievadi (A, B, C, vai D): ")
@@ -24,27 +27,37 @@ def tests():
 def check_atb(answer, atbilde):
 
     if answer == atbilde:
-        print("Pareizi!")
+        print(Fore.GREEN + "Pareizi!")
         return 1
     else:
-        print("Nepareizi!")
+        print(Fore.RED + "Nepareizi!")
         return 0
 
 # -------------------------
 def disp_rezult(pareizatb, minejumi):
-    print("-------------------------")
-    print("REZULTĀTS")
-    print("-------------------------")
+    print(Fore.BLUE + "-------------------------")
+    print(Fore.GREEN + "REZULTĀTS")
+    print(Fore.BLUE + "-------------------------")
 
-    print("Atbildes: ", end="")
+    print(Fore.LIGHTBLACK_EX + "Atbildes: ", end="")
     for i in jautajumi:
         print(jautajumi.get(i), end=" ")
     print()
 
-    print("Minējumi: ", end="")
-    for i in minejumi:
-        print(i, end=" ")
-    print()
+    # print("Minējumi: ", end="")
+    # for i in minejumi:
+    #     print(i, end=" ")
+    # print()
+
+
+
+    with open("atbildes.txt", "w") as f:
+        for atbilde in minejumi:
+            f.write(atbilde + " ")
+    
+    with open("atbildes.txt", "r") as f:
+        tavi = f.read()
+        print("Jūsu atbildes: ", tavi)
 
     score = int((pareizatb/len(jautajumi)) * 100)
     print("Jūsu rezultāts ir: " + str(score) + "%")
@@ -52,16 +65,19 @@ def disp_rezult(pareizatb, minejumi):
     if score == 100:
         print("Apsveicu ar perfektu rezultātu!")
     
+    
+    os.remove("atbildes.txt")
+    
 
 # -------------------------
 
 
 def velreiz():
 
-    response = input("Vai vēlies mēģināt vēlreiz? (Jā vai Nē): ")
+    response = input(Fore.RED + "Vai vēlies mēģināt vēlreiz? (Jā vai Nē): ")
     response = response.upper()
 
-    if response == "Jā":
+    if response == "JĀ":
         return True
     else:
         return False
@@ -90,9 +106,11 @@ opcijas = [["A Pāris desmiti",  "B Pāris simti",  "C Viss atkarīgs no glāzes
 ["A Ar gribu",  "B Ar iesnām",  "C Ar jūras slimību",  "D Ar bronhītu"],
 ["A Ar 5 km/h",  "B Ar 10km/h",  "C Ar 50 km/h",  "D Ar 0 km/h"],]
 
+
+
 tests()
  
 while velreiz():
     tests()
 
-print("Paldies!")
+print(Fore.GREEN + "Paldies par piedalīšanos!")
