@@ -1,5 +1,5 @@
 # kursadtests
-
+//Galvenais fails ir MAIN2.py
 Tests, "Vai vari atbildēt uz 10 āķīgiem jautājumiem?"
 Tiek importēts os, kas ļauj izdzēst izveidoto teksta failu un tiek importēts Fore no colorama, lai formatētu teksta krāsu.
 Ir četras funkcijas, pirmā izmanto visas pārējās trīs funkcijas, papildus izvadot testa jautājumus, otrā pārbauda atbildes, vai lietotājs ir atbildējis pareizi vai nē. 
